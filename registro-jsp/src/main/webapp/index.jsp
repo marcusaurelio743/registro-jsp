@@ -15,7 +15,7 @@
 	%>
 	<br/>
 	
-	<form action="mostra-nome.jsp">
+	<form action="ServletLogin" method="post">
 		<input type="text" name="nome"/>
 		<input type="text" name="idade"/>
 		<input type="submit" value="Enviar"/>
