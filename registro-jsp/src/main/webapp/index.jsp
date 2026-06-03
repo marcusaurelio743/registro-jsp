@@ -9,11 +9,17 @@
 
 <body>
 	<h1>Olá JSP Bem Vindo !!!!!</h1>
-	<h4 style="color:red;">
+	
 	<%
 		out.print("Olá JSP Bem Vindo !!!!");
 	%>
-	</h4>
+	<br/>
+	
+	<form action="mostra-nome.jsp">
+		<input type="text" name="nome"/>
+		<input type="text" name="idade"/>
+		<input type="submit" value="Enviar"/>
+	</form>
 
 </body>
 
