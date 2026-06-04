@@ -63,6 +63,9 @@ public class FilterAltenticacao extends HttpFilter implements Filter {
 			
 		}catch (Exception e) {
 		e.printStackTrace();
+		RequestDispatcher redireciona = request.getRequestDispatcher("/erro.jsp");
+		request.setAttribute("msg", e);
+		redireciona.forward(request, response);
 		try {
 			connection.rollback();
 		} catch (SQLException e1) {
