@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DaoLoginRepository;
 import model.ModelLogin;
 
 
 @WebServlet(urlPatterns = {"/principal/ServletLogin", "/ServletLogin"})
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       private DaoLoginRepository daoLoginRepository = new DaoLoginRepository();
     
     public ServletLogin() {
     }
@@ -33,9 +34,9 @@ public class ServletLogin extends HttpServlet {
 		
 		if(login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 			ModelLogin modellogin = new ModelLogin(login,senha);
-
-			if(modellogin.getLogin().equalsIgnoreCase("admin") &&
-					modellogin.getSenha().equalsIgnoreCase("admin")) {
+			
+			//verifica se o login do usuario esta no banco
+			if(daoLoginRepository.validarAutenticacao(modellogin)) {
 				
 				request.getSession().setAttribute("usuario", modellogin.getLogin());
 				
