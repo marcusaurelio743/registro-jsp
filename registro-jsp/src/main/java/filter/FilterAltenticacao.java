@@ -35,11 +35,10 @@ public class FilterAltenticacao extends HttpFilter implements Filter {
 		
 		String urlParaAutenticar = req.getServletPath();
 		
-		if(usuario == null || (usuario != null && usuario.isEmpty()) &&
-				!urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin") &&
-				!urlParaAutenticar.equalsIgnoreCase("/ServletLogin")) {
+		if(usuario == null &&
+				!urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin") ) {
 			
-			RequestDispatcher redireciona = request.getRequestDispatcher("index.jsp?url="+urlParaAutenticar);
+			RequestDispatcher redireciona = request.getRequestDispatcher("/index.jsp?url="+urlParaAutenticar);
 			request.setAttribute("msg", "Por favor, Loge no Sistema!!");
 			redireciona.forward(request, response);
 			return;
