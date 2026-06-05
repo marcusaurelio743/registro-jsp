@@ -53,6 +53,12 @@ public class ServletLogin extends HttpServlet {
 				redirecionar.forward(request, response);
 				
 			}
+			
+		}else {
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("msg", "Por favor Informe O Login e Senha corretamente!!");
+			redirecionar.forward(request, response);
+			
 		}
 	}
 
