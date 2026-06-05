@@ -55,7 +55,7 @@
 			</form>
 		</div>
 	</div>
-	<div class="alert alert-warning" role="alert">
+	<div style="text-align:center;" class="alert alert-warning" role="alert ">
 		${msg}
 	</div>
 	
