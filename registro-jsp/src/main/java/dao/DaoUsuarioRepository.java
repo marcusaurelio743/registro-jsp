@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class DaoUsuarioRepository {
 	private Connection connection;
 	private static final String  QUERY_INSERT = "INSERT INTO public.model_login (login, senha, nome) VALUES( ?, ?, ?);";
 	private static final String QUERY_BUSCAR_TODOS = "SELECT * FROM public.model_login;";
+	private static final String QUERY_BUSCAR_DELETAR = "DELETE FROM public.model_login WHERE id = ?;";
 	private static final String QUERY_BUSCAR_BY_LOGIN = "SELECT * FROM public.model_login where login = ?;";
 	private static final String QUERY_BUSCAR_BY_ID = "SELECT * FROM public.model_login where id = ?;";
 	private static final String QUERY_UPDATE = "UPDATE public.model_login SET login=?,senha=?, nome=? WHERE id=?";
@@ -114,6 +116,19 @@ public class DaoUsuarioRepository {
 	
 	public List<ModelLogin> buscarTodos(){
 		return buscar(QUERY_BUSCAR_TODOS, null);
+	}
+	
+	public void deletar(Long id) {
+		try {
+			PreparedStatement statement = connection.prepareStatement(QUERY_BUSCAR_DELETAR);
+			statement.setLong(1, id);
+			statement.execute();
+			connection.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 

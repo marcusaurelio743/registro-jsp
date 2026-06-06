@@ -40,6 +40,14 @@ public class ServletUsuarioController extends HttpServlet {
 			request.setAttribute("msg", "Usuário Carregado na Tela!!!!");
 			request.setAttribute("todosUser", daoUser.buscarTodos());
 			redirecionar.forward(request, response);
+		}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletar") && id !=null && !id.isEmpty()) {
+			RequestDispatcher redirecionar = request.getRequestDispatcher("principal/usuario.jsp");
+			 daoUser.deletar(Long.valueOf(id));
+			 modelLogin = new ModelLogin();
+			request.setAttribute("modelLogin", modelLogin);
+			request.setAttribute("msg", "Usuário Foi Excluido!!!!");
+			request.setAttribute("todosUser", daoUser.buscarTodos());
+			redirecionar.forward(request, response);
 		}
 	}
 
