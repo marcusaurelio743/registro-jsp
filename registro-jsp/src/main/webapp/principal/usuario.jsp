@@ -33,7 +33,42 @@
                                     <!-- Page-body start -->
                                     <div class="page-body">
                                         <div class="row">
-                                           <h1>Cadastro de Usúario</h1>
+                                           <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Cadastro de Usuário</h5>
+                                                        
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <form class="form-material" method="post" action="<%=request.getContextPath() %>/ServletUsuarioController">
+                                                           <div class="form-group form-default form-static-label">
+                                                                <input type="text" name="id" id="id" class="form-control"  disabled="disabled">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">ID:</label>
+                                                            </div>
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input type="text" name="nome" id="nome" class="form-control"  required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Nome:</label>
+                                                            </div>
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input type="text" name="login" id="login" class="form-control"  required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Email </label>
+                                                            </div>
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input type="password" name="senha" id="senha" class="form-control"  required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Senha </label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success">Salvar</button>
+                                                            <button type="button" class="btn btn-primary">Alterar</button>
+                                                            <button type="button" class="btn btn-danger">Excluir</button>
+                                                         </form>
+                                                       </div>
+                                                            </div>
+                                                            </div>
+                                                            
                                         </div>
                                     </div>
                                     <!-- Page-body end -->
