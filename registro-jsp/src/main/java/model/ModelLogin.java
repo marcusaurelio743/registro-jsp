@@ -11,7 +11,14 @@ public class ModelLogin implements Serializable {
 	private String nome;
 	private Long id;
 	
-	
+	public boolean isNew() {
+		if(this.id == null ) {
+			return true;
+		}else if(this.id != null && id > 0) {
+			return false;
+		}
+		return id == null;
+	}
 	public String getNome() {
 		return nome;
 	}

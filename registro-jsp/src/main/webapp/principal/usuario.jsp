@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -42,22 +43,22 @@
                                                     <div class="card-block">
                                                         <form class="form-material" method="post" action="<%=request.getContextPath() %>/ServletUsuarioController">
                                                            <div class="form-group form-default form-static-label">
-                                                                <input type="text" name="id" id="id" class="form-control"  disabled="disabled">
+                                                                <input type="text" name="id" id="id" class="form-control" value="${modelLogin.id }"  readonly="readonly">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">ID:</label>
                                                             </div>
                                                             <div class="form-group form-default form-static-label">
-                                                                <input type="text" name="nome" id="nome" class="form-control"  required="">
+                                                                <input type="text" name="nome" id="nome" value="${modelLogin.nome }" class="form-control"  required="">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Nome:</label>
                                                             </div>
                                                             <div class="form-group form-default form-static-label">
-                                                                <input type="text" name="login" id="login" class="form-control"  required="">
+                                                                <input type="text" name="login" id="login" class="form-control" value="${modelLogin.login }"  required="">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Email </label>
                                                             </div>
                                                             <div class="form-group form-default form-static-label">
-                                                                <input type="password" name="senha" id="senha" class="form-control"  required="">
+                                                                <input type="password" name="senha" id="senha" value="${modelLogin.senha }" class="form-control"  required="">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Senha </label>
                                                             </div>
@@ -66,8 +67,49 @@
                                                             <button type="button" class="btn btn-danger">Excluir</button>
                                                          </form>
                                                        </div>
-                                                            </div>
-                                                            </div>
+                                                       <div class="card">
+                                            
+                                            <br/>
+                                            <br/>
+                                            <span>${msg}</span>
+                                            <br/>
+                                            <br/>
+                                            
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Nome:</th>
+                                                                <th>Login:</th>
+                                                                <th>Editar:</th>
+                                                                <th>Excluir:</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <c:forEach items="${todosUser}" var="usuario">
+														        <tr>
+														            <td>${usuario.id}</td>
+														            <td>${usuario.nome}</td>
+														            <td>${usuario.login}</td>
+														            <td>
+														            	<a href="<%=request.getContextPath() %>/ServletUsuarioController?acao=verEditar&id=${usuario.id}">
+														            	Editar</a>
+														            </td>
+														            <td>
+														            	<a href="<%=request.getContextPath() %>/ServletUsuarioController?acao=deletar&id=${usuario.id}">
+														            	Deletar</a>
+														            </td>
+														        </tr>
+														    </c:forEach>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                
+                                        </div>
+                                            
+                                          </div>
+                                               </div>
+                                                            
                                                             
                                         </div>
                                     </div>
